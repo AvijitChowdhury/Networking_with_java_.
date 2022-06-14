@@ -2,17 +2,14 @@ import java.util.concurrent.ArrayBlockingQueue;
 import java.util.concurrent.BlockingDeque;
 import java.util.concurrent.BlockingQueue;
 
-class producer implements Runnable{
-
-    @Override
-    public void run() {
-
-    }
-}
 
 public class PCBlockingQueue {
     public static void main(String[] args) {
         BlockingQueue<String> q  = new ArrayBlockingQueue<>(4);
+        Producer producer= new Producer(q,"Producer1");
+        Consumer consumer1 = new Consumer(q, "Consumer1");
+        Consumer consumer2 = new Consumer(q, "Consumer2");
+        Consumer consumer3 = new Consumer(q, "Consumer3");
 
     }
 }
