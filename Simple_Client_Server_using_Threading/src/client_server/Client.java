@@ -18,23 +18,19 @@ public class Client {
 
         Scanner sc = new Scanner(System.in);
 
-
-        while(true) {
-            String message = sc.nextLine();
-            if(message.equals("exits")){
-                break;
-            }
-            //send to server
-            oos.writeObject(message);
-            try {
-                //recieve from server
-                Object fromServer = oois.readObject();
-                System.out.println("From Server: " + (String) fromServer);
-            } catch (ClassNotFoundException e) {
-                e.printStackTrace();
-            }
-        }
-        socket.close();
+        new ReaderThread(oois, "client1");
+        new WriterThread(oos, "client1");
+//        while(true) {
+//            String message = sc.nextLine();
+//            if(message.equals("exits")){
+//                break;
+//            }
+//            //send to server
+//            oos.writeObject(message);
+//            new ReaderThread(oois, "client1");
+//
+//        }
+       // socket.close();
     }
 
 }
